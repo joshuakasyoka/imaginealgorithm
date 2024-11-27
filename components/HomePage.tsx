@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Roboto_Mono } from 'next/font/google';
+import Link from 'next/link';
 
 const robotoMono = Roboto_Mono({ 
   subsets: ['latin'],
@@ -12,7 +13,8 @@ interface Workshop {
   id: string;
   number: string;
   title: string;
-  shape?: 'pentagon' | 'hexagon' | 'octagon' | 'nonagon' | 'decagon';
+  shape?: 'pentagon' | 'hexagon' | 'octagon' | 'nonagon' | 'decagon'| 'hendecagon';
+  slug: string;
 }
 
 const workshops: Workshop[] = [
@@ -20,37 +22,43 @@ const workshops: Workshop[] = [
     id: '1',
     number: '001',
     title: 'Data Collection',
-    shape: 'pentagon'
+    shape: 'pentagon',
+    slug: 'data-collection'
   },
   {
     id: '2',
     number: '002',
-    title: 'Data Tagging',
-    shape: 'pentagon'
+    title: 'Data Labelling',
+    shape: 'hexagon',
+    slug: 'data-collection'
   },
   {
     id: '3',
     number: '003',
-    title: 'The Interface',
-    shape: 'pentagon'
+    title: 'Data Training',
+    shape: 'octagon',
+    slug: 'data-collection'
   },
   {
     id: '4',
     number: '004',
-    title: 'Training Data',
-    shape: 'pentagon'
+    title: 'Algorithm Choice',
+    shape: 'nonagon',
+    slug: 'data-collection'
   },
   {
     id: '5',
     number: '005',
-    title: 'Testing Phase',
-    shape: 'pentagon'
+    title: 'Algorithmic Model',
+    shape: 'decagon',
+    slug: 'data-collection'
   },
   {
     id: '6',
     number: '006',
-    title: 'Implementation',
-    shape: 'pentagon'
+    title: 'Interace Implementation',
+    shape: 'hendecagon',
+    slug: 'data-collection'
   },
 ];
 
@@ -60,18 +68,21 @@ const getPolygonClipPath = (shape: Workshop['shape'] = 'hexagon') => {
     hexagon: 'clip-path-hexagon',
     octagon: 'clip-path-octagon',
     nonagon: 'clip-path-nonagon',
-    decagon: 'clip-path-decagon'
+    decagon: 'clip-path-decagon',
+    hendecagon: 'clip-path-hendecagon'
   };
   
   return shapes[shape] || shapes.hexagon;
 };
 
-const WorkshopCard = ({ number, title, shape }: { 
+const WorkshopCard = ({ number, title, shape, slug }: { 
   number: string; 
   title: string;
   shape?: Workshop['shape'];
+  slug: string;
 }) => {
   return (
+    <Link href={`/workshops/${slug}`} className="flex-shrink-0 px-4">
     <div className="flex-shrink-0 px-4 py-8"> {/* Added vertical padding for hover growth */}
       <div className={`relative aspect-square w-[500px] ${getPolygonClipPath(shape)}`}>
         <div className="absolute inset-0 bg-[#7EE66B] hover:bg-[#6CD559] transition-colors duration-300 cursor-pointer group">
@@ -82,13 +93,14 @@ const WorkshopCard = ({ number, title, shape }: {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 
 const HomePage = () => {
   return (
     <div className={`min-h-screen bg-white ${robotoMono.className}`}>
-      <main className="w-full py-16">
+      <main className="w-full py-8">
         <div className="max-w-[1600px] mx-auto px-8">
           <h1 className="text-4xl sm:text-xl mb-8 font-light">Imagine Algorithm</h1>
           
@@ -110,6 +122,7 @@ const HomePage = () => {
             <div className="flex space-x-8 px-8 py-4"> {/* Added vertical padding */}
               {workshops.map((workshop) => (
                 <WorkshopCard 
+                  slug={workshop.slug}
                   key={workshop.id}
                   number={workshop.number}
                   title={workshop.title}
