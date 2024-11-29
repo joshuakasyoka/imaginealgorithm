@@ -1,7 +1,5 @@
 'use client';
 
-'use client';
-
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { Plus, X, Edit2 } from 'lucide-react';
@@ -16,7 +14,6 @@ import { Plus, X, Edit2 } from 'lucide-react';
           { id: '6', name: 'Click Patterns', color: 'green' },
           { id: '7', name: 'Video Watch Duration', color: 'green' },
           { id: '8', name: 'Engagement Times', color: 'green' },
-          { id: '9', name: 'Account Activity Hours', color: 'green' }
         ],
         'Personal Information': [
           { id: '10', name: 'Location History', color: 'green' },
@@ -27,7 +24,6 @@ import { Plus, X, Edit2 } from 'lucide-react';
           { id: '15', name: 'IP Address', color: 'green' },
           { id: '16', name: 'Connected Accounts', color: 'green' },
           { id: '17', name: 'Email Contacts', color: 'green' },
-          { id: '18', name: 'Phone Model', color: 'green' }
         ],
         'Content Analysis': [
           { id: '19', name: 'Message Sentiment', color: 'green' },
@@ -38,7 +34,6 @@ import { Plus, X, Edit2 } from 'lucide-react';
           { id: '24', name: 'Post Frequency', color: 'green' },
           { id: '25', name: 'Media Preferences', color: 'green' },
           { id: '26', name: 'Language Usage', color: 'green' },
-          { id: '27', name: 'Reaction Patterns', color: 'green' }
         ]
       };
 

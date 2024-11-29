@@ -63,11 +63,11 @@ const workshops = {
         buttons: [
           {
             href: '/tools/data-tool',
-            label: 'Data Mapping Tool'
+            label: 'Alternate Data Analysis'
           },
           {
             href: '/tools/data-set-tool',
-            label: 'Workshop Workbook'
+            label: 'Alternate Data Set'
           },
           {
             href: '/gallery',
@@ -169,7 +169,7 @@ export default function WorkshopPage() {
       <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm z-10">
         <div className="max-w-7xl mx-auto px-8 py-4">
           <Link href="/" className="text-[#7EE66B] hover:text-[#6CD559]">
-            ← Back to workshops
+            ← Return
           </Link>
         </div>
       </nav>
