@@ -14,7 +14,7 @@ const HexButton = ({ href, label }: HexButtonProps) => (
     href={href}
     className="relative w-32 h-36 flex items-center justify-center group"
   >
-    <div className="absolute w-full h-full bg-[#7EE66B] clip-hex transition-transform hover:scale-105" />
+    <div className="absolute w-full h-full bg-[#BFE752] clip-hex transition-transform hover:scale-105" />
     <span className="relative text-white z-10 font-light text-center px-4">
       {label}
     </span>
@@ -108,7 +108,7 @@ export default function WorkshopPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-light mb-4">Workshop not found</h1>
-          <Link href="/" className="text-[#7EE66B] hover:text-[#6CD559]">
+          <Link href="/" className="text-[#BFE752] hover:text-[#6CD559]">
             Return home
           </Link>
         </div>
@@ -168,7 +168,7 @@ export default function WorkshopPage() {
     <div className="min-h-screen">
       <nav className="fixed top-0 left-0 bg-white/80 backdrop-blur-sm z-10">
         <div className="max-w-7xl mx-auto px-8 py-4">
-          <Link href="/" className="text-[#7EE66B] hover:text-[#6CD559]">
+          <Link href="/" className="text-[#BFE752] hover:text-[#6CD559]">
             ← Return
           </Link>
         </div>
