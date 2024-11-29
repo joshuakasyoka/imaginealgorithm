@@ -1,50 +1,60 @@
 'use client';
 
 import React, { useState } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 import { Plus, X, Edit2 } from 'lucide-react';
 
-    const initialCategories = {
-        'Behavioral Tracking': [
-          { id: '1', name: 'Mouse Movement Patterns', color: 'green' },
-          { id: '2', name: 'Scroll Behavior', color: 'green' },
-          { id: '3', name: 'Time Spent per Post', color: 'green' },
-          { id: '4', name: 'Interaction Frequency', color: 'green' },
-          { id: '5', name: 'Content Hover Time', color: 'green' },
-          { id: '6', name: 'Click Patterns', color: 'green' },
-          { id: '7', name: 'Video Watch Duration', color: 'green' },
-          { id: '8', name: 'Engagement Times', color: 'green' },
-        ],
-        'Personal Information': [
-          { id: '10', name: 'Location History', color: 'green' },
-          { id: '11', name: 'Device Information', color: 'green' },
-          { id: '12', name: 'Contact Lists', color: 'green' },
-          { id: '13', name: 'Search History', color: 'green' },
-          { id: '14', name: 'Browser Type', color: 'green' },
-          { id: '15', name: 'IP Address', color: 'green' },
-          { id: '16', name: 'Connected Accounts', color: 'green' },
-          { id: '17', name: 'Email Contacts', color: 'green' },
-        ],
-        'Content Analysis': [
-          { id: '19', name: 'Message Sentiment', color: 'green' },
-          { id: '20', name: 'Photo Content', color: 'green' },
-          { id: '21', name: 'Shared Links', color: 'green' },
-          { id: '22', name: 'Comment Topics', color: 'green' },
-          { id: '23', name: 'Profile Keywords', color: 'green' },
-          { id: '24', name: 'Post Frequency', color: 'green' },
-          { id: '25', name: 'Media Preferences', color: 'green' },
-          { id: '26', name: 'Language Usage', color: 'green' },
-        ]
-      };
+interface CategoryItem {
+  id: string;
+  name: string;
+  color: string;
+}
+
+interface Categories {
+  [key: string]: CategoryItem[];
+}
+
+const initialCategories = {
+  'Behavioral Tracking': [
+    { id: '1', name: 'Mouse Movement Patterns', color: 'green' },
+    { id: '2', name: 'Scroll Behavior', color: 'green' },
+    { id: '3', name: 'Time Spent per Post', color: 'green' },
+    { id: '4', name: 'Interaction Frequency', color: 'green' },
+    { id: '5', name: 'Content Hover Time', color: 'green' },
+    { id: '6', name: 'Click Patterns', color: 'green' },
+    { id: '7', name: 'Video Watch Duration', color: 'green' },
+    { id: '8', name: 'Engagement Times', color: 'green' },
+  ],
+  'Personal Information': [
+    { id: '10', name: 'Location History', color: 'green' },
+    { id: '11', name: 'Device Information', color: 'green' },
+    { id: '12', name: 'Contact Lists', color: 'green' },
+    { id: '13', name: 'Search History', color: 'green' },
+    { id: '14', name: 'Browser Type', color: 'green' },
+    { id: '15', name: 'IP Address', color: 'green' },
+    { id: '16', name: 'Connected Accounts', color: 'green' },
+    { id: '17', name: 'Email Contacts', color: 'green' },
+  ],
+  'Content Analysis': [
+    { id: '19', name: 'Message Sentiment', color: 'green' },
+    { id: '20', name: 'Photo Content', color: 'green' },
+    { id: '21', name: 'Shared Links', color: 'green' },
+    { id: '22', name: 'Comment Topics', color: 'green' },
+    { id: '23', name: 'Profile Keywords', color: 'green' },
+    { id: '24', name: 'Post Frequency', color: 'green' },
+    { id: '25', name: 'Media Preferences', color: 'green' },
+    { id: '26', name: 'Language Usage', color: 'green' },
+  ]
+};
 
 const colors = ['green', 'orange', 'red'];
 
 const DataCategorizationApp = () => {
-  const [categories, setCategories] = useState(initialCategories);
-  const [editingCategory, setEditingCategory] = useState(null);
-  const [editingItem, setEditingItem] = useState(null);
+  const [categories, setCategories] = useState<Categories>(initialCategories);
+  const [editingCategory, setEditingCategory] = useState<string | null>(null);
+  const [editingItem, setEditingItem] = useState<string | null>(null);
 
-  const handleDragEnd = (result) => {
+  const handleDragEnd = (result: DropResult) => {
     if (!result.destination) return;
     
     const { source, destination } = result;
@@ -58,7 +68,7 @@ const DataCategorizationApp = () => {
     setCategories(newCategories);
   };
 
-  const cycleColor = (categoryName, itemId) => {
+  const cycleColor = (categoryName: string, itemId: string) => {
     const newCategories = { ...categories };
     const category = newCategories[categoryName];
     const itemIndex = category.findIndex(item => item.id === itemId);
@@ -70,7 +80,7 @@ const DataCategorizationApp = () => {
     }
   };
 
-  const handleDeleteItem = (categoryName, itemId) => {
+  const handleDeleteItem = (categoryName: string, itemId: string) => {
     const newCategories = { ...categories };
     newCategories[categoryName] = newCategories[categoryName].filter(
       item => item.id !== itemId
@@ -78,7 +88,7 @@ const DataCategorizationApp = () => {
     setCategories(newCategories);
   };
 
-  const handleItemNameEdit = (categoryName, itemId, newName) => {
+  const handleItemNameEdit = (categoryName: string, itemId: string, newName: string) => {
     const newCategories = { ...categories };
     const category = newCategories[categoryName];
     const itemIndex = category.findIndex(item => item.id === itemId);
@@ -97,7 +107,7 @@ const DataCategorizationApp = () => {
     });
   };
 
-  const addNewItem = (categoryName) => {
+  const addNewItem = (categoryName: string) => {
     const newCategories = { ...categories };
     const newId = Math.random().toString(36).substr(2, 9);
     newCategories[categoryName].push({
@@ -109,7 +119,7 @@ const DataCategorizationApp = () => {
     setCategories(newCategories);
   };
 
-  const handleCategoryNameEdit = (oldName, newName) => {
+  const handleCategoryNameEdit = (oldName: string, newName: string) => {
     if (oldName === newName || newName.trim() === '') {
       setEditingCategory(null);
       return;
@@ -143,9 +153,9 @@ const DataCategorizationApp = () => {
                   className="w-full p-2 border mb-4"
                   defaultValue={categoryName}
                   onBlur={(e) => handleCategoryNameEdit(categoryName, e.target.value)}
-                  onKeyPress={(e) => {
+                  onKeyPress={(e: React.KeyboardEvent<HTMLInputElement>) => {
                     if (e.key === 'Enter') {
-                      handleCategoryNameEdit(categoryName, e.target.value);
+                      handleCategoryNameEdit(categoryName, (e.target as HTMLInputElement).value);
                     }
                   }}
                   autoFocus
@@ -204,7 +214,7 @@ const DataCategorizationApp = () => {
           onBlur={(e) => handleItemNameEdit(categoryName, item.id, e.target.value)}
           onKeyPress={(e) => {
             if (e.key === 'Enter') {
-              handleItemNameEdit(categoryName, item.id, e.target.value);
+              handleItemNameEdit(categoryName, item.id, (e.target as HTMLInputElement).value);
             }
           }}
           onClick={(e) => e.stopPropagation()}
