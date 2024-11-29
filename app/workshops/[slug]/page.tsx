@@ -66,7 +66,7 @@ const workshops = {
             label: 'Data Mapping Tool'
           },
           {
-            href: '/resources/workbook',
+            href: '/tools/data-set-tool',
             label: 'Workshop Workbook'
           },
           {
