@@ -63,15 +63,15 @@ const workshops = {
         buttons: [
           {
             href: '/tools/data-tool',
-            label: 'Alternate Data Analysis'
+            label: 'Simulation'
+          },
+          {
+            href: '/tools/',
+            label: 'Consideration'
           },
           {
             href: '/tools/data-set-tool',
-            label: 'Alternate Data Set'
-          },
-          {
-            href: '/gallery',
-            label: 'Photo Gallery'
+            label: 'Formaulation'
           }
         ]
       }
