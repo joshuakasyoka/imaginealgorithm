@@ -66,7 +66,7 @@ const workshops = {
             label: 'Simulation'
           },
           {
-            href: '/tools/',
+            href: '/tools/consideration',
             label: 'Consideration'
           },
           {
@@ -167,9 +167,9 @@ export default function WorkshopPage() {
   return (
     <div className="min-h-screen">
       <nav className="fixed top-0 left-0 bg-white/80 backdrop-blur-sm z-10">
-        <div className="max-w-7xl mx-auto px-8 py-4">
-          <Link href="/" className="text-[#BFE752] hover:text-[#6CD559]">
-            ← Return
+        <div className="max-w-7xl mx-auto px-8 py-4 font-light">
+          <Link href="/" className="text-[#000000] hover:text-[#6CD559]">
+            Return
           </Link>
         </div>
       </nav>

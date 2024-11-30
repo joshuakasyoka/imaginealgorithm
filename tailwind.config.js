@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'custom-green': '#78E752',
+        'custom-green': '#BFE752',
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
