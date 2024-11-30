@@ -301,9 +301,9 @@ useEffect(() => {
         <g key={`${category}-${Math.random()}`}>
           <polygon
             points={getPolygonPoints(config.points, scale)}
-            fill="#7FFF7F"
+            fill="#BFE752"
             fillOpacity={0.15}
-            stroke="#7FFF7F"
+            stroke="#BFE752"
             strokeWidth="0.5"
             className="transition-all duration-300"
           />
@@ -330,10 +330,6 @@ useEffect(() => {
 
   return (
     <div className="min-h-screen font-mono p-4">
-      <div className="flex justify-between text-sm mb-4">
-        <span className="text-green-400">Create an Inclusive Data Set</span>
-        <span>Real-time Analysis</span>
-      </div>
       {/* Changed grid-cols-3 to grid-cols-1 md:grid-cols-3 for responsive layout */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="space-y-4">
@@ -357,7 +353,7 @@ useEffect(() => {
                   <div className="w-24 truncate">{category}</div>
                   <div className="flex-1 relative h-1 bg-gray-100">
                     <div
-                      className="absolute h-1 bg-green-400 transition-all duration-300"
+                      className="absolute h-1 bg-custom-green transition-all duration-300"
                       style={{ width: `${percentage}%` }}
                     />
                   </div>
@@ -387,7 +383,7 @@ useEffect(() => {
                     <polygon
                       points={getPolygonPoints(config.points)}
                       fill="none"
-                      stroke={activeImage === category ? '#7FFF7F' : '#000'}
+                      stroke={activeImage === category ? '#BFE752' : '#000'}
                       strokeWidth="1"
                     />
                   </svg>
@@ -419,7 +415,7 @@ useEffect(() => {
                   <div className="flex gap-1 text-xs">
                     <button
                       onClick={handleAddCategory}
-                      className="flex-1 border hover:bg-green-400 hover:text-white"
+                      className="flex-1 border hover:bg-custom-green hover:text-white"
                     >
                       Add
                     </button>
@@ -459,7 +455,7 @@ useEffect(() => {
           <div className="space-y-2 text-xs max-h-[400px] md:max-h-none overflow-y-auto">
             {insights.map((insight, index) => (
               <div key={index}>
-                #{insight.id} {insight.prefix && <span className="text-green-400">{insight.prefix}</span>} {insight.text} {insight.emphasis && <span className="text-green-400">{insight.emphasis}</span>}
+                #{insight.id} {insight.prefix && <span className="text-custom-green">{insight.prefix}</span>} {insight.text} {insight.emphasis && <span className="text-custom-green">{insight.emphasis}</span>}
               </div>
             ))}
           </div>
